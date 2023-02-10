@@ -1,3 +1,3 @@
-bucket = "terraform-b70"
+bucket = "terraform-raviteja"
 key    = "roboshop-infra/prod/terraform.tfstate"
 region = "us-east-1"
