@@ -5,4 +5,4 @@ vpc = {
     cidr_block = "10.0.0.0/16"
   }
 }
-# Want to send these details to main.tf
+# Want to send these details to roboshop-infra, main.tf
