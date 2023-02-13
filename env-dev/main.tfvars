@@ -4,10 +4,11 @@ default_vpc_id = "vpc-0380e34c4b82831a1"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
-    subnets_cidr = ["10.0.0.0/17", "10.0.128.0/17"]
+    public_subnets_cidr = ["10.0.0.0/24", "10.0.1.0/24"]
+    private_subnets_cidr = ["10.0.2.0/24", "10.0.3.0/24"]
   }
 }
-# Want to send these details to roboshop-infra, main.tf
+# Want to send these details to module at roboshop-infra -- main.tf
 # we cut cidr block into 2 pieces
 
 

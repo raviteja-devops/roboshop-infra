@@ -5,9 +5,11 @@ module "network" {
 
   for_each = var.vpc
   cidr_block = each.value.cidr_block
-  subnets_cidr = each.value.subnets_cidr
+  public_subnets_cidr = each.value.public_subnets_cidr
+  private_subnets_cidr = each.value.private_subnets_cidr
 }
-# there is this one module and we are calling this module
+# we call this module
+# this same information goes to tf-modules -- vars.tf
 
 # To Refer Particular Module
 # Everything we need to maintain is modules from git-side
