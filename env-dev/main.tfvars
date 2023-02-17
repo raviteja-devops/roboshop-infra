@@ -34,5 +34,13 @@ vpc = {
   }
 }
 
+
+docdb = {
+  main = {
+    vpc_name = "main"
+    subnets_name = "db"
+  }
+}
+
 # WE ARE RUNNING TWO LOOPS: public_subnets , private_subnets
 # CREATED SUBNETS INSIDE THE VPC BLOCK

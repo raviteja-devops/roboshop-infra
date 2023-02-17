@@ -11,25 +11,20 @@ module "vpc" {
 }
 
 
-#module "subnets" {
-#  source = "github.com/raviteja-devops/tf-module-subnets.git"
-#  env = var.env
-#  default_vpc_id = var.default_vpc_id
-#
-#  for_each = var.subnets
-#  cidr_block = each.value.cidr_block
-#  availability_zone = each.value.availability_zone
-#  name = each.value.name
-#  vpc_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
-#  vpc_peering_connection_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_peering_connection_id", null)
-#  internet_gw = lookup(each.value, "internet_gw", false)
-#  nat_gw = lookup(each.value, "nat_gw", false)
-#}
+module "docdb" {
+  source = "github.com/raviteja-devops/tf-module-docdb.git"
+  env = var.env
 
-# looking for internet_gw, if there use that value, if not there take false
-# we call this module
-# this same information goes to tf-modules -- vars.tf
+  for_each = var.docdb
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+}
 
-# To Refer Particular Module
+# we lookup for module vpc, inside vpc module we look for vpc name(which we provide at main.tfvars),
+# we used each.value because we declared vpc_name value as main in docdb at main.tfvars
+# inside vpc_name again we need to look for private subnet id's, so again we use lookup of lookup
+# inside that we have app, db, web, so we need db, again lookup and we declared subnets_name at .tfvars so we use its value
+# inside db we have subnet_ids, one more lookup
+# this id's were fetched by main.tf of docdb module for grouping purpose only
+
 # Everything we need to maintain is modules from git-side
-# we are trying to maintain the uniformity of the variables also
+
