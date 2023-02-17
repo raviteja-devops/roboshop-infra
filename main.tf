@@ -21,6 +21,10 @@ module "docdb" {
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   engine_version = each.value.engine_version
 }
+
+output "vpc" {
+  value = module.vpc
+}
 # double quote string, for expressions no need
 
 # we lookup for module vpc, inside vpc module we look for vpc name(which we provide at main.tfvars),
