@@ -39,6 +39,7 @@ docdb = {
   main = {
     vpc_name = "main"
     subnets_name = "db"
+    engine_version = "4.0.0"
   }
 }
 # WE ARE HARDCODED VPC_NAME, SUBNET_NAME BECAUSE TOMORROW IF WE HAVE 2 VPC'S OR 2 DATABASES THEN WE CAN CLEARLY SAY WHICH VPC/DB WE NEED
