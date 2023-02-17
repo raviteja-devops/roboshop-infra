@@ -17,7 +17,10 @@ module "docdb" {
 
   for_each = var.docdb
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+  vpc_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
+  allow_cidr = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), "app", null), "subnet_ids", null)
 }
+# double quote string, for expressions no need
 
 # we lookup for module vpc, inside vpc module we look for vpc name(which we provide at main.tfvars),
 # we used each.value because we declared vpc_name value as main in docdb at main.tfvars
