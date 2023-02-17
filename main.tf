@@ -18,7 +18,7 @@ module "docdb" {
   for_each = var.docdb
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
   vpc_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
-  allow_cidr = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), "app", null), "subnet_ids", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
 }
 # double quote string, for expressions no need
 
@@ -27,6 +27,7 @@ module "docdb" {
 # inside vpc_name again we need to look for private subnet id's, so again we use lookup of lookup
 # inside that we have app, db, web, so we need db, again lookup and we declared subnets_name at .tfvars so we use its value
 # inside db we have subnet_ids, one more lookup
+# LooKup looks for data from output.tf in vpc module
 # this id's were fetched by main.tf of docdb module for grouping purpose only
 
 # Everything we need to maintain is modules from git-side
