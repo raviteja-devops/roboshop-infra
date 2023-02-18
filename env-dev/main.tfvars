@@ -40,6 +40,8 @@ docdb = {
     vpc_name = "main"
     subnets_name = "db"
     engine_version = "4.0.0"
+    number_of_instances = 1
+    instance_class = "db.t3.medium"
   }
 }
 # WE ARE HARDCODED VPC_NAME, SUBNET_NAME BECAUSE TOMORROW IF WE HAVE 2 VPC'S OR 2 DATABASES THEN WE CAN CLEARLY SAY WHICH VPC/DB WE NEED
