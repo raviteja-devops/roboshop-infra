@@ -46,6 +46,17 @@ docdb = {
 }
 # WE ARE HARDCODED VPC_NAME, SUBNET_NAME BECAUSE TOMORROW IF WE HAVE 2 VPC'S OR 2 DATABASES THEN WE CAN CLEARLY SAY WHICH VPC/DB WE NEED
 
+rds = {
+  main = {
+    vpc_name = "main"
+    subnets_name = "db"
+    engine = "mysql"
+    engine_version = "5.7.mysql_aurora.2.03.2"
+    number_of_instances = 1
+    instance_class = "db.t3.micro"
+  }
+}
+
 
 # WE ARE RUNNING TWO LOOPS: public_subnets , private_subnets
 # CREATED SUBNETS INSIDE THE VPC BLOCK
