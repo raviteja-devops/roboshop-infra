@@ -79,6 +79,22 @@ rabbitmq = {
 }
 # WE ARE SENDING THIS RABBITMQ FOR_EACH LOOP OUT TO MAIN.TF IN INFRA AND WE DECLARED ITS VARIABLE
 
+alb = {
+  public = {
+    vpc_name = "main"
+    subnets_type = "public_subnet_ids"
+    subnets_name = "public"
+    internal = false
+
+  }
+  private = {
+    vpc_name = "main"
+    subnets_type = "private_subnet_ids"
+    subnets_name = "app"
+    internal = true
+  }
+}
+# SUBNET_TYPE IS BASED ON OUTPUTS WE DECLARED IN VPC MODULE
 
 # WE ARE RUNNING TWO LOOPS: public_subnets , private_subnets
 # CREATED SUBNETS INSIDE THE VPC BLOCK
