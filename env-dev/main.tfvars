@@ -67,6 +67,18 @@ elasticache = {
   }
 }
 
+rabbitmq = {
+  main = {
+    vpc_name = "main"
+    subnets_name = "db"
+    engine_type = "RabbitMQ"
+    engine_version = "3.10.10"
+    host_instance_type = "mq.t3.micro"
+    deployment_mode = "SINGLE_INSTANCE"
+  }
+}
+# WE ARE SENDING THIS RABBITMQ FOR_EACH LOOP OUT TO MAIN.TF IN INFRA AND WE DECLARED ITS VARIABLE
+
 
 # WE ARE RUNNING TWO LOOPS: public_subnets , private_subnets
 # CREATED SUBNETS INSIDE THE VPC BLOCK
