@@ -57,6 +57,7 @@ module "elasticache" {
 module "rabbitmq" {
   source = "github.com/raviteja-devops/tf-module-rabbitmq.git"
   env = var.env
+  bastion_cidr = var.bastion_cidr
 
   for_each = var.rabbitmq
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
