@@ -63,10 +63,6 @@ module "rabbitmq" {
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
   vpc_id = lookup(lookup(module.vpc, each.value.vpc_name, null), "vpc_id", null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
-  engine_type = each.value.engine_type
-  engine_version = each.value.engine_version
-  host_instance_type = each.value.host_instance_type
-  deployment_mode = each.value.deployment_mode
 }
 # THESE VARIABLES WE ARE SENDING TO VARS.TF IN RABBITMQ MODULE AND WE USE IT IN MAIN.TF OF RABBITMQ MODULE
 
