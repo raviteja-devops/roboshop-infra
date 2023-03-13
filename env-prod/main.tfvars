@@ -87,7 +87,7 @@ alb = {
     subnets_type = "public_subnet_ids"
     subnets_name = "public"
     internal = false
-    dns_domain = "www.raviteja.online"
+    dns_domain = "www"
   }
   private = {
     vpc_name = "main"
