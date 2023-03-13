@@ -87,13 +87,14 @@ alb = {
     subnets_type = "public_subnet_ids"
     subnets_name = "public"
     internal = false
-
+    dns_domain = "www.raviteja.online"
   }
   private = {
     vpc_name = "main"
     subnets_type = "private_subnet_ids"
     subnets_name = "app"
     internal = true
+    dns_domain = ''
   }
 }
 # SUBNET_TYPE IS BASED ON OUTPUTS WE DECLARED IN VPC MODULE
